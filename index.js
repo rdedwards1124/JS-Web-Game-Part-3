@@ -1,3 +1,25 @@
+
+// function move(image, left, bottom){
+//     image.style.position = 'fixed'
+//     image.style.left = left + 'px'
+//     image.style.bottom = bottom + 'px'
+// }
+
+function move(image){
+    image.style.position = 'fixed'
+    
+    function moveToCoordinates(left, bottom){
+        image.style.left = left + 'px'
+        image.style.bottom = bottom + 'px'
+    }
+
+    return {
+        to: moveToCoordinates
+    }
+}
+
+
+
 function newImage(url, left, bottom){
     let image = document.createElement('img')
     image.src = url
@@ -8,17 +30,30 @@ function newImage(url, left, bottom){
     return image
 }
 
-newImage('assets/green-character.gif', 100, 250)
-newImage('assets/tree.png', 200, 450)
-newImage('assets/pillar.png', 350, 250)
-newImage('assets/pine-tree.png', 450, 350)
-newImage('assets/crate.png', 150, 350)
-newImage('assets/well.png', 500, 575)
+// let greenCharacter = newImage('assets/green-character.gif')
+// // move(greenCharacter, 100, 250)
+
+// move(greenCharacter).to(100, 250)
+
+move(newImage('assets/green-character.gif')).to(100, 250)
+move(newImage('assets/tree.png')).to(200, 450)
+move(newImage('assets/pillar.png')).to(350, 250)
+move(newImage('assets/pine-tree.png')).to(450, 350)
+move(newImage('assets/crate.png')).to(150, 350)
+move(newImage('assets/well.png')).to(500, 575)
+
+
+// newImage('assets/green-character.gif', 100, 250)
+// newImage('assets/tree.png', 200, 450)
+// newImage('assets/pillar.png', 350, 250)
+// newImage('assets/pine-tree.png', 450, 350)
+// newImage('assets/crate.png', 150, 350)
+// newImage('assets/well.png', 500, 575)
 
 
 function newItem(url, left, bottom){
     let item = newImage(url, left, bottom)
-    item.addEventListener('click', () => {
+    item.addEventListener('click', () => {  // This thing: () =>  ,is the inline arrow function.
         item.remove()
         let inventoryItem = document.createElement('img')
         inventoryItem.src = url;
@@ -49,3 +84,6 @@ function newInventory(){
 }
 
 const inventory = newInventory()
+
+
+
